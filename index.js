@@ -11,10 +11,11 @@ const { setTimeout } = require('timers/promises');
 
     page.on('requestfailed', (request) => {
         // This will hang until the browser is closed
+        // then fail with "Target page, context or browser has been closed"
         request.allHeaders();
 
         // This will be null
-        request.failure();
+        console.log(request.failure());
     });
 
     await page.goto('https://security-crawl-maze.app/css/font-face.html', {
